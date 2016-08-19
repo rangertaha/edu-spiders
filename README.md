@@ -1,4 +1,4 @@
-osint-spiders
+edu-spiders
 =============
 
 Spiders for crawling course information from various educational institutes.
