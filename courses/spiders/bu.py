@@ -25,8 +25,8 @@ class EduSpider(CrawlSpider):
         item = Course()
         item["institute"] = 'Boston University'
         item['site'] = 'www.bu.edu'
-        item['title'] = response.xpath('//*[@id="col1"]/div/h1/text()').extract()
-        item['id'] = response.xpath('//*[@id="col1"]/div/h2/text()').extract()
-        item['credits'] = response.xpath('//*[@id="info-box"]/dl/dd[1]/text()').extract()
-        item['description'] = response.xpath('//*[@id="course-content"]/p[1]/text()').extract()
+        item['title'] = response.xpath('//*[@id="col1"]/div/h1/text()').extract()[0]
+        item['id'] = response.xpath('//*[@id="col1"]/div/h2/text()').extract()[0]
+        item['credits'] = response.xpath('//*[@id="info-box"]/dl/dd[1]/text()').extract()[0]
+        item['description'] = response.xpath('//*[@id="course-content"]/p[1]/text()').extract()[0]
         yield item

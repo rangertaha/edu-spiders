@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
-import json
 import hashlib
-
 from datetime import datetime
 
 from elasticsearch import Elasticsearch
-
-
-
 
 
 class ElasticsearchPipeline(object):
@@ -17,9 +12,9 @@ class ElasticsearchPipeline(object):
 
     def get_id(self, item):
         m = hashlib.md5()
-        url = item.get('title', None)
+        title = item.get('title', None)
         id = item.get('id', None)
-        d = id + url
+        d = id + title
         if d:
             m.update(d)
             return m.hexdigest()
