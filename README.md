@@ -21,17 +21,10 @@ To view the list of spiders use the `list` command.
     bu.edu
 
 
-To crawl the www.bu.edu site use the `bu.edu` spider. The scraped items will be stored in an Elasticsearch server by default.
-
-    $ scrapy crawl bu.edu
-
-
-## Output formats
-
-The scraped items will be stored in an Elasticsearch server by default. To output in *csv* format do the following.
+To crawl the www.bu.edu site use the `bu.edu` spider. To output in *csv* format do the following.
 
 * *-o* output filename
 * *-t* output format
 
-    $ scrapy crawl bu.edu -t csv -o bu.edu.csv
+    $ scrapy crawl bu.edu -t csv -o data/bu.edu.csv
 
