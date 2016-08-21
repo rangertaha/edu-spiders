@@ -70,7 +70,7 @@ DEFAULT_REQUEST_HEADERS = {
 # 'scrapy.exporters.PprintItemExporter': 300,
 # 'scrapy.exporters.CsvItemExporter': 300,
 ITEM_PIPELINES = {
-
+    'scrapy.exporters.CsvItemExporter': 300,
     'courses.pipelines.ElasticsearchPipeline': 300,
 }
 
