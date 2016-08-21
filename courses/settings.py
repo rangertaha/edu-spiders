@@ -69,10 +69,12 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 # 'scrapy.exporters.PprintItemExporter': 300,
 # 'scrapy.exporters.CsvItemExporter': 300,
+"""
 ITEM_PIPELINES = {
-    'scrapy.exporters.CsvItemExporter': 300,
     'courses.pipelines.ElasticsearchPipeline': 300,
 }
+"""
+
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
