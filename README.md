@@ -27,4 +27,3 @@ To crawl the www.bu.edu site use the `bu.edu` spider. To output in *csv* format 
 * *-t* output format
 
     $ scrapy crawl bu.edu -t csv -o data/bu.edu.csv
-
