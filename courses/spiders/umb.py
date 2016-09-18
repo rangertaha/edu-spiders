@@ -25,7 +25,7 @@ class EduSpider(CrawlSpider):
         item = Course()
         item["institute"] = 'Harvard University Extension School'
         item['site'] = 'www.umb.edu'
-        item['title'] = response.xpath('//*[@id="content"]/div[2]/div[2]/ul/li[4]/h4/text()').extract()[0]
+        item['title'] = response.xpath('//*[@id="pageTitle"]/text()').extract()[0]
         item['id'] = response.xpath('//*[@id="main"]/div/div/div[1]/div[1]/div[2]/div/p/span/text()').extract()[0]
         item['credits'] = response.xpath('//*[@id="main"]/div/div/div[2]/div[1]/div/div[2]/div/div[2]/p/text()').extract()[0][0]
         item['description'] = response.xpath('//*[@id="content"]/div[2]/div[2]/ul/li[4]/div/text()').extract()[0]
