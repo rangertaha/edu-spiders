@@ -22,6 +22,11 @@ class EduSpider(CrawlSpider):
         )),
     )
 
+    def clean(self, data):
+        if len(data) > 0:
+            if isinstance(data, list):
+                return data[0]
+
     def parse_item(self, response):
         item = Course()
         item["institute"] = 'University of Massachusetts Boston'
@@ -32,6 +37,6 @@ class EduSpider(CrawlSpider):
         b = b.replace('UGRD', '')
         b = b.replace('GRAD', '')
         item['id'] = b.strip()
-        item['credits'] = response.xpath('//*[@id="content"]/div[2]/div[2]/table[1]/tbody/tr[2]/td/div/div[6]/span[2]/text()').extract()[0]
+        item['credits'] = self.clean(response.xpath('//*[@id="content"]/div[2]/div[2]/table[1]/tbody/tr[2]/td/div/div[6]/span[2]/text()').extract())
         item['description'] = response.xpath('//*[@id="content"]/div[2]/div[2]/p[2]/text()').extract()[0]
         yield item
