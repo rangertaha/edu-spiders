@@ -21,6 +21,8 @@ To view the list of spiders use the `list` command.
     bu.edu
     extension.harvard.edu
     suffolk.edu
+    umb.edu
+
 
 
 
