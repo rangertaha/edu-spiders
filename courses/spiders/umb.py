@@ -31,7 +31,7 @@ class EduSpider(CrawlSpider):
         item = Course()
         item["institute"] = 'University of Massachusetts Boston'
         item['site'] = 'www.umb.edu'
-        item['title'] = response.xpath('//*[@id="pageTitle"]/text()').extract()[0]
+        item['title'] = response.xpath('//*[@id="content"]/div[2]/div[2]/h1[@id="pageTitle"]/text()').extract()[0]
         breadcrumb = response.xpath('//*[@id="content"]/div[2]/div[2]/p[1]/text()').extract()[0]
         b = breadcrumb.replace('>', ' ')
         b = b.replace('UGRD', '')
@@ -41,3 +41,5 @@ class EduSpider(CrawlSpider):
         item['description'] = response.xpath('//*[@id="content"]/div[2]/div[2]/p[2]/text()').extract()[0]
         if item['id'] and item['title'] and item['description']:
             yield item
+
+
