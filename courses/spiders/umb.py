@@ -24,7 +24,7 @@ class EduSpider(CrawlSpider):
 
     def parse_item(self, response):
         item = Course()
-        item["institute"] = 'Harvard University Extension School'
+        item["institute"] = 'University of Massachusetts Boston'
         item['site'] = 'www.umb.edu'
         item['title'] = response.xpath('//*[@id="pageTitle"]/text()').extract()[0]
         breadcrumb = response.xpath('//*[@id="content"]/div[2]/div[2]/p[1]/text()').extract()[0]
