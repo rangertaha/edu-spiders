@@ -39,4 +39,5 @@ class EduSpider(CrawlSpider):
         item['id'] = b.strip()
         item['credits'] = self.clean(response.xpath('//*[@id="content"]/div[2]/div[2]/table[1]/tbody/tr[2]/td/div/div[6]/span[2]/text()').extract())
         item['description'] = response.xpath('//*[@id="content"]/div[2]/div[2]/p[2]/text()').extract()[0]
-        yield item
+        if item['id'] and item['title'] and item['description']:
+            yield item
