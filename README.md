@@ -19,6 +19,9 @@ To view the list of spiders use the `list` command.
 
     bhcc.mass.edu
     bu.edu
+    extension.harvard.edu
+    suffolk.edu
+
 
 
 To crawl the www.bu.edu site use the `bu.edu` spider. To output in *csv* format do the following.
