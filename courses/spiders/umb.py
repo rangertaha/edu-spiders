@@ -13,11 +13,12 @@ class EduSpider(CrawlSpider):
 
     rules = (
         Rule(LxmlLinkExtractor(
-             allow=('.*/academics/course_catalog/courses/[a-z]+_[A-Z]+', 'https://www.umb.edu/academics/course_catalog/course_info/grd_AMST_all_604'),
+            allow=('.*/academics/course_catalog/course_info/[a-z]+_[A-Z]+_all_[0-9]+',),
         ), callback='parse_item'),
 
         Rule(LxmlLinkExtractor(
-            allow=('.*/academics/course_catalog/courses/.*', ),
+            allow=(
+            '.*/academics/course_catalog/listing/[a-z]+', '/academics/course_catalog/courses/[a-z]+_[A-Z]+_all$'),
         )),
     )
 
