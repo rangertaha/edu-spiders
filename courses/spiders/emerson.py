@@ -9,15 +9,16 @@ from courses.items import Course
 class EduSpider(CrawlSpider):
     name = 'emerson.edu'
     allowed_domains = ['emerson.edu']
-    start_urls = ['http://www.emerson.edu/academics/']
+    start_urls = ['http://www.emerson.edu/academics/courses/descriptions']
 
+    def parse(self, response):
+		sel = Selector(response)
 
-    def parse_item(self, response):
-        item = Course()
-        item["institute"] = 'Emerson College'
-        item['site'] = 'www.emerson.edu'
-        item['title'] = response.xpath('//*[@id="BC110"]/div[1]/strong').extract()[0]
-        item['id'] = response.xpath('//*[@id="BC110"]/div[1]/strong').extract()[0]
-        item['credits'] = response.xpath('//*[@id="BC110"]/div[1]/em').extract()[0]
-        item['description'] = response.xpath('//*[@id="BC110"]/div[2]').extract()[0]
-        yield item
+		courseSelector = '//ul[@id="courseList"]//li'
+		courses = sel.xpath(courseSelector)
+
+		for course in courses:
+			item = Course()
+			item['title'] = course.xpath('div//div//strong')
+			yield item
+
