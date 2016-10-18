@@ -6,19 +6,16 @@ from scrapy.http import HtmlResponse
 from courses.items import Course
 
 
-class EduSpider(CrawlSpider):
+class EduSpider(Spider):
     name = 'emerson.edu'
     allowed_domains = ['emerson.edu']
     start_urls = ['http://www.emerson.edu/academics/courses/descriptions']
 
     def parse(self, response):
-		sel = Selector(response)
+        lu = response.xpath('//ul[@id="courseList"]')
 
-		courseSelector = '//ul[@id="courseList"]//li'
-		courses = sel.xpath(courseSelector)
-
-		for course in courses:
-			item = Course()
-			item['title'] = course.xpath('div//div//strong')
-			yield item
+        for li in lu:
+            item = Course()
+            item['title'] = li.xpath('li/div[@id="BC110"]/div[1]/strong/text()').extract()[0]
+            yield item
 
