@@ -1,2 +1,2 @@
-Scrapy>=1.1.1
-elasticsearch>=2.0.0,<3.0.0
+Scrapy>=2.16,<3
+elasticsearch>=9,<10

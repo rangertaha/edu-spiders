@@ -1,26 +1,21 @@
-# -*- coding: utf-8 -*-
 import hashlib
 from datetime import datetime
 
 from elasticsearch import Elasticsearch
 
 
-class ElasticsearchPipeline(object):
-
+class ElasticsearchPipeline:
     def __init__(self):
-        self.es = Elasticsearch()
+        self.es = Elasticsearch("http://localhost:9200")
 
     def get_id(self, item):
-        m = hashlib.md5()
-        title = item.get('title', None)
-        id = item.get('id', None)
-        d = id + title
-        if d:
-            m.update(d)
-            return m.hexdigest()
+        title = item.get("title")
+        course_id = item.get("id")
+        if course_id and title:
+            return hashlib.md5(f"{course_id}{title}".encode()).hexdigest()
+        return None
 
     def process_item(self, item, spider):
-        id = self.get_id(item)
-        item['timestamp'] = datetime.now()
-        self.es.index(index="edu", doc_type="course", id=id, body=dict(item))
+        item["timestamp"] = datetime.now()
+        self.es.index(index="edu", id=self.get_id(item), document=dict(item))
         return item

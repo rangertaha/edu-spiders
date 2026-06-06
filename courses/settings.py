@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-
-# Scrapy settings for news project
+# Scrapy settings for the courses project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -33,7 +31,6 @@ ROBOTSTXT_OBEY = False
 DOWNLOAD_DELAY = 0
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 5
-CONCURRENT_REQUESTS_PER_IP = 5
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
@@ -67,13 +64,12 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-# 'scrapy.exporters.PprintItemExporter': 300,
-# 'scrapy.exporters.CsvItemExporter': 300,
-"""
-ITEM_PIPELINES = {
-    'courses.pipelines.ElasticsearchPipeline': 300,
-}
-"""
+# ITEM_PIPELINES = {
+#     'courses.pipelines.ElasticsearchPipeline': 300,
+# }
+
+# Set settings whose default value is deprecated to a future-proof value.
+FEED_EXPORT_ENCODING = "utf-8"
 
 
 
