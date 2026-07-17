@@ -29,6 +29,8 @@ class EduSpider(CrawlSpider):
         item["site"] = "www.extension.harvard.edu"
         item["title"] = response.xpath('//*[@id="main"]/div/div/div[1]/div[1]/div[1]/h1/text()').get()
         item["id"] = response.xpath('//*[@id="main"]/div/div/div[1]/div[1]/div[2]/div/p/span/text()').get()
-        item["credits"] = response.xpath('//*[@id="main"]/div/div/div[2]/div[1]/div/div[2]/div/div[2]/p/text()').get()[0]
+        item["credits"] = response.xpath('//*[@id="main"]/div/div/div[2]/div[1]/div/div[2]/div/div[2]/p/text()').get()[
+            0
+        ]
         item["description"] = response.xpath('//*[@id="main"]/div/div/div[1]/div[1]/div[3]/div/p/text()').get()
         yield item

@@ -7,23 +7,23 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'courses'
+BOT_NAME = "courses"
 
-SPIDER_MODULES = ['courses.spiders']
-NEWSPIDER_MODULE = 'courses.spiders'
+SPIDER_MODULES = ["courses.spiders"]
+NEWSPIDER_MODULE = "courses.spiders"
 
-#LOG_LEVEL = 'INFO'
-#LOG_FILE = 'courses.log'
+# LOG_LEVEL = 'INFO'
+# LOG_FILE = 'courses.log'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'news (+http://www.yourdomain.com)'
+# USER_AGENT = 'news (+http://www.yourdomain.com)'
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.97 Safari/537.22 AlexaToolbar/alxg-3.1"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 200
+# CONCURRENT_REQUESTS = 200
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
@@ -36,31 +36,31 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 5
 COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
+# TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-   'Accept-Language': 'en',
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en",
 }
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
+# SPIDER_MIDDLEWARES = {
 #    'news.middlewares.MyCustomSpiderMiddleware': 543,
-#}
+# }
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+# DOWNLOADER_MIDDLEWARES = {
 #    'news.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+# }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+# EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
+# }
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
@@ -70,7 +70,6 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Set settings whose default value is deprecated to a future-proof value.
 FEED_EXPORT_ENCODING = "utf-8"
-
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -90,9 +89,9 @@ AUTOTHROTTLE_DEBUG = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 HTTPCACHE_ENABLED = False
 HTTPCACHE_EXPIRATION_SECS = 0
-HTTPCACHE_DIR = 'httpcache'
-HTTPCACHE_IGNORE_HTTP_CODES = []
-HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+HTTPCACHE_DIR = "httpcache"
+HTTPCACHE_IGNORE_HTTP_CODES: list[int] = []
+HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 
 DEPTH_LIMIT = 4
@@ -101,14 +100,9 @@ DEPTH_LIMIT = 4
 REACTOR_THREADPOOL_MAXSIZE = 20
 
 
-
 RETRY_ENABLED = True
-
 
 
 DOWNLOAD_TIMEOUT = 15
 
 REDIRECT_ENABLED = True
-
-
-AJAXCRAWL_ENABLED = True
