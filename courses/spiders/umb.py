@@ -37,7 +37,7 @@ class EduSpider(CrawlSpider):
         item["site"] = "www.umb.edu"
         item["title"] = response.xpath('//*[@id="content"]/div[2]/div[2]/h1[@id="pageTitle"]/text()').get()
         breadcrumb = response.xpath('//*[@id="content"]/div[2]/div[2]/p[1]/text()').get()
-        b = breadcrumb.replace(">", " ")
+        b = (breadcrumb or "").replace(">", " ")
         b = b.replace("UGRD", "")
         b = b.replace("GRAD", "")
         item["id"] = b.strip()

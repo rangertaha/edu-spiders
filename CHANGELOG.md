@@ -20,6 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project metadata in `pyproject.toml`: SPDX license expression, authors,
   keywords, classifiers, and project URLs.
 
+### Fixed
+
+- `bhcc.mass.edu` and `extension.harvard.edu` spiders no longer raise a
+  `TypeError` when the credits element is missing from a course page: the
+  credits selector is extracted once and the field is set to `None` when
+  absent, leaving output on well-formed pages unchanged.
+- `umb.edu` spider no longer raises an `AttributeError` when the breadcrumb
+  paragraph is missing from a course page; such incomplete items are skipped,
+  consistent with its existing incomplete-course handling.
+
 ### Changed
 
 - Raised the minimum supported Python version from 3.10 to 3.12

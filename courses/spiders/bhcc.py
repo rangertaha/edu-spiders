@@ -31,7 +31,8 @@ class EduSpider(CrawlSpider):
             item["institute"] = "Bunker Hill Community College"
             item["title"] = div.xpath('div[@class="classHeader"]/div[@class="courseTitle"]/text()').get()
             item["id"] = div.xpath('div[@class="classHeader"]/div[@class="courseNum"]/text()').get()
-            item["credits"] = div.xpath('div[@class="classHeader"]/div[@class="courseCredits"]/text()').get()[0]
+            credits = div.xpath('div[@class="classHeader"]/div[@class="courseCredits"]/text()').get()
+            item["credits"] = credits[0] if credits else None
             item["description"] = div.xpath('div[@class="courseDescription"]/p/text()').get()
             item["category"] = div.xpath('//*[@id="mainContentArea"]/h1/text()').get()
             yield item

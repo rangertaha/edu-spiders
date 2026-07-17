@@ -46,6 +46,17 @@ def test_umb_skips_incomplete_course(response_from):
     assert items == []
 
 
+def test_umb_missing_breadcrumb_skips_course(response_from):
+    spider = umb.EduSpider()
+    response = response_from(
+        "umb_missing_breadcrumb.html", "https://www.umb.edu/academics/course_catalog/course_info/ugrd_CS_all_500"
+    )
+
+    items = list(spider.parse_item(response))
+
+    assert items == []
+
+
 def test_umb_clean():
     spider = umb.EduSpider()
 
@@ -70,6 +81,19 @@ def test_bhcc_parse_item(response_from):
     assert first["category"] == "Accounting"
     assert second["id"] == "ACC-102"
     assert second["credits"] == "4"
+
+
+def test_bhcc_missing_credits_yields_none(response_from):
+    spider = bhcc.EduSpider()
+    response = response_from("bhcc_missing_credits.html", "http://www.bhcc.mass.edu/catalog/courses/index.php?dept=ACC")
+
+    items = list(spider.parse_item(response))
+
+    assert len(items) == 1
+    item = items[0]
+    assert item["title"] == "Accounting Seminar"
+    assert item["id"] == "ACC-103"
+    assert item["credits"] is None
 
 
 def test_suffolk_parse_item(response_from):
@@ -122,3 +146,18 @@ def test_harvard_extension_parse_item(response_from):
     assert item["id"] == "CSCI E-101"
     assert item["credits"] == "4"
     assert item["description"] == "Fundamentals of data science with hands-on projects."
+
+
+def test_harvard_extension_missing_credits_yields_none(response_from):
+    spider = harvard_extension.EduSpider()
+    response = response_from(
+        "harvard_missing_credits.html", "http://www.extension.harvard.edu/academics/courses/data-science/10102"
+    )
+
+    items = list(spider.parse_item(response))
+
+    assert len(items) == 1
+    item = items[0]
+    assert item["title"] == "Introduction to Data Science"
+    assert item["id"] == "CSCI E-101"
+    assert item["credits"] is None
